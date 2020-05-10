@@ -1,15 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import TodoItem from "./components/TodoItem";
+import Header from "./components/Header";
+import LoginForm from "./components/LoginForm";
 
 function App() {
   return (
-    <div className="App">
-      <ul>
-        <li>Go to market</li>
-        <li>Buy food</li>
-        <li>Make dinner</li>
-      </ul>
+    <div className="container mt-3 text-center">
+      <div className="row">
+        <div className="col">
+        <Header />
+        <br/>
+        <LoginForm />
+        <TodoItem title="mua bim bim" />
+        <TodoItem title="di cho" />
+        <TodoItem title="tam bien" />
+        </div>
+
+      </div>
     </div>
   );
 }
