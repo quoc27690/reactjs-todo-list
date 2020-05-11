@@ -12,18 +12,18 @@ export default class RecommendedFriends extends Component {
     return (
       <div className="container">
         <div className="d-flex justify-content-center">
-          <table class="table table-borderless" style={{ width: 400 }}>
+          <table className="table table-borderless" style={{ width: 400 }}>
             <thead>
               <tr>
-                <td scope="col" className='text-left'>Gợi ý cho bạn</td>
-                <td scope="col">Xem tất cả</td>
+                <td className="text-left">Gợi ý cho bạn</td>
+                <td>Xem tất cả</td>
               </tr>
             </thead>
             <tbody>
               {this.friends.map((friend, index) => (
-                <tr>
-                  <td scope="row">
-                    <FollowFriendListItem friend={friend} key={index} />
+                <tr key={index}>
+                  <td>
+                    <FollowFriendListItem friend={friend} />
                   </td>
                   <td>
                     <p>Theo dõi</p>

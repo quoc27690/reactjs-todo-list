@@ -9,6 +9,7 @@ export default class FollowFriendListItem extends Component {
             src="https://loremflickr.com/320/240"
             style={{ width: 50, height: 50, borderRadius: 50 }}
             className="mr-3"
+            alt=''
           />
           <div className="text-left">
             {this.props.friend}

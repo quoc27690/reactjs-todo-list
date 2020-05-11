@@ -12,12 +12,17 @@ import {
   ToolOutlined,
 } from "@ant-design/icons";
 import RecommendedFriends from "./components/RecommendedFriends";
+import Table from "./components/Table";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.todoItems = ["mua bim bim", "di cho", "tam bien"];
+    this.todoItems = [
+      { title: "mua bim bim", isComplete: false },
+      { title: "di cho", isComplete: true },
+      { title: "tam bien", isComplete: true },
+    ];
   }
   render() {
     return (
@@ -36,11 +41,10 @@ export default class App extends Component {
         <hr />
         <RecommendedFriends />
         <hr />
-        <TodoItem title="mua bim bim" />
-        <TodoItem title="di cho" />
-        <TodoItem title="tam bien" />
+        <Table />
+        <hr />
         {this.todoItems.map((item, index) => (
-          <TodoItem title={item} key={index} />
+          <TodoItem item={item} key={index} />
         ))}
       </div>
     );

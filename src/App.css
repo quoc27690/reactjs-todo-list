@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.TodoItem {
+  font-weight: 300;
+  font-size: 24;
+  color: #4d4d4d;
+}
+
+.TodoItem-complete {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+
+.isEven {
+  background-color: #d4d4d4;
+}
