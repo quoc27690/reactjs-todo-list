@@ -9,11 +9,11 @@ export default class LoginForm extends Component {
           <div class="col-4">
             <h1>Sign In</h1>
             <br />
-            <p className="text-left">Username</p>
+            <p className="text-left">Email</p>
             <input
               type="text"
               class="form-control"
-              placeholder="Username"
+              placeholder={this.props.email}
             ></input>
             <br />
             <p className="text-left">Password</p>
