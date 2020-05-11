@@ -13,6 +13,7 @@ import {
 } from "@ant-design/icons";
 import RecommendedFriends from "./components/RecommendedFriends";
 import Table from "./components/Table";
+import Notification from "./components/Notification";
 
 export default class App extends Component {
   constructor(props) {
@@ -43,9 +44,13 @@ export default class App extends Component {
         <hr />
         <Table />
         <hr />
-        {this.todoItems.map((item, index) => (
-          <TodoItem item={item} key={index} />
-        ))}
+        <Notification hasUnread={0} />
+        <hr />
+        {this.todoItems.length > 0 &&
+          this.todoItems.map((item, index) => (
+            <TodoItem item={item} key={index} />
+          ))}
+        {this.todoItems.length === 0 && <div>Nothing</div>}
       </div>
     );
   }
