@@ -5,7 +5,7 @@ export default class TabMenu extends Component {
   render() {
     return (
       <div>
-        <button type="button" class="btn btn-light" style={{width:150}}>
+        <button type="button" className="btn btn-light" style={{width:150}}>
           <Icon style={{ fontSize: 40 }} component={this.props.component} />
           <p>{this.props.label}</p>
         </button>

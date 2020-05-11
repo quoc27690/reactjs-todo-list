@@ -3,48 +3,48 @@ import React, { Component } from "react";
 export default class LoginForm extends Component {
   render() {
     return (
-      <div class="container">
-        <div class="row">
-          <div class="col-4"></div>
-          <div class="col-4">
+      <div className="container">
+        <div className="row">
+          <div className="col-4"></div>
+          <div className="col-4">
             <h1>Sign In</h1>
             <br />
             <p className="text-left">Email</p>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder={this.props.email}
             ></input>
             <br />
             <p className="text-left">Password</p>
             <input
               type="password"
-              class="form-control"
+              className="form-control"
               placeholder="Password"
             ></input>
             <br />
-            <button type="button" class="btn btn-primary form-control">
+            <button type="button" className="btn btn-primary form-control">
               Sign In
             </button>
             <br />
-            <div class="form-check">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 value=""
                 id="defaultCheck1"
               />
-              <label class="form-check-label" for="defaultCheck1">
+              <label className="form-check-label">
                 Keep me signed in
               </label>
             </div>
             <br/>
-            <div class='d-flex justify-content-around'>
+            <div className='d-flex justify-content-around'>
                 <a href='#'>Forgot username?</a>
                 <a href='#'>Forgot password?</a>
             </div>
           </div>
-          <div class="col-4"></div>
+          <div className="col-4"></div>
         </div>
       </div>
     );
