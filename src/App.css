@@ -37,17 +37,44 @@
   }
 }
 
+/* TodoItem */
 .TodoItem {
   font-weight: 300;
   font-size: 24;
   color: #4d4d4d;
 }
-
 .TodoItem-complete {
   text-decoration: line-through;
   opacity: 0.3;
 }
 
+/* Table */
 .isEven {
   background-color: #d4d4d4;
+}
+
+/* TrafficLight */
+.TrafficLight {
+  display: flex;
+  flex-direction: column;
+}
+.TrafficLight .bulb {
+  width: 64px;
+  height: 64px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 10;
+  opacity: 0.2;
+}
+.TrafficLight .bulb.active {
+  opacity: 1;
+}
+.TrafficLight .bulb.red {
+  background-color: red;
+}
+.TrafficLight .bulb.orange {
+  background-color: orange;
+}
+.TrafficLight .bulb.green {
+  background-color: green;
 }
