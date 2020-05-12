@@ -16,18 +16,37 @@ import Table from "./components/Table";
 import Notification from "./components/Notification";
 import TrafficLight from "./components/TrafficLight";
 import SearchBox from "./components/SearchBox ";
+import Modal from "./components/Modal";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.todoItems = [
-      { title: "mua bim bim", isComplete: false },
-      { title: "di cho", isComplete: true },
-      { title: "tam bien", isComplete: true },
-    ];
+    this.state = {
+      todoItems: [
+        { title: "mua bim bim", isComplete: false },
+        { title: "di cho", isComplete: false },
+        { title: "tam bien", isComplete: false },
+      ],
+    };
   }
+
+  onClick = (item) => {
+    return () => {
+      const { todoItems } = this.state;
+      const index = todoItems.indexOf(item);
+      this.setState({
+        todoItems: [
+          ...todoItems.slice(0, index),
+          { ...item, isComplete: !item.isComplete },
+          ...todoItems.slice(index + 1),
+        ],
+      });
+    };
+  };
+
   render() {
+    const { todoItems } = this.state;
     return (
       <div className="container mt-3 text-center">
         <h5>Bài tập 06</h5>
@@ -54,11 +73,11 @@ export default class App extends Component {
         <Notification hasUnread={0} />
         <hr />
         <h5>Bài học 11</h5>
-        {this.todoItems.length > 0 &&
-          this.todoItems.map((item, index) => (
-            <TodoItem item={item} key={index} />
+        {todoItems.length > 0 &&
+          todoItems.map((item, index) => (
+            <TodoItem item={item} key={index} onClick={this.onClick(item)} />
           ))}
-        {this.todoItems.length === 0 && <div>Nothing</div>}
+        {todoItems.length === 0 && <div>Nothing</div>}
         <hr />
         <h5>Bài học 12</h5>
         <TrafficLight />
@@ -66,6 +85,8 @@ export default class App extends Component {
         <h5>Bài tập 12</h5>
         <SearchBox />
         <hr />
+        <h5>Bài tập 13</h5>
+        <Modal />
       </div>
     );
   }
