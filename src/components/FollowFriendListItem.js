@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 
+import PropTypes from "prop-types";
+
 export default class FollowFriendListItem extends Component {
   render() {
+    const { friend } = this.props;
     return (
       <div className="container">
         <div className="row">
           <img
-            src="https://loremflickr.com/320/240"
+            src={friend.avatarUrl}
             style={{ width: 50, height: 50, borderRadius: 50 }}
             className="mr-3"
-            alt=''
+            alt=""
           />
           <div className="text-left">
-            {this.props.friend}
+            {friend.user}
             <p className="text-black-50">Gợi ý cho bạn</p>
           </div>
         </div>
@@ -20,3 +23,10 @@ export default class FollowFriendListItem extends Component {
     );
   }
 }
+
+FollowFriendListItem.propTypes = {
+  friend: PropTypes.shape({
+    user: PropTypes.string,
+    avatarUrl: PropTypes.string,
+  }),
+};

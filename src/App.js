@@ -114,7 +114,7 @@ export default class App extends Component {
           <TabMenu component={ToolOutlined} label="Settings" />
         </div>
         <hr />
-        <h5>Bài tập 08</h5>
+        <h5>Bài tập 08, 19</h5>
         <RecommendedFriends />
         <hr />
         <h5>Bài tập 10</h5>

@@ -45,7 +45,6 @@
 }
 .TodoItem-complete {
   text-decoration: line-through;
-  opacity: 0.3;
 }
 
 /* Table */

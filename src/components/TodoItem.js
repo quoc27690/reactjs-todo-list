@@ -7,6 +7,8 @@ import "../App.css";
 import checkmark from "../images/checkmark.svg";
 import checkmarkdone from "../images/checkmarkdone.svg";
 
+import PropTypes from "prop-types";
+
 export default class TodoItem extends Component {
   render() {
     const { item, onClick, onCickx } = this.props;
@@ -28,3 +30,12 @@ export default class TodoItem extends Component {
     );
   }
 }
+
+TodoItem.propTypes = {
+  item: PropTypes.shape({
+    title: PropTypes.string,
+    isComplete: PropTypes.bool,
+  }),
+  onCick: PropTypes.func,
+  onCickx: PropTypes.func,
+};

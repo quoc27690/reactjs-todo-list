@@ -5,7 +5,11 @@ import FollowFriendListItem from "./FollowFriendListItem";
 export default class RecommendedFriends extends Component {
   constructor(props) {
     super(props);
-    this.friends = ["friend1", "friend2", "friend3"];
+    this.friends = [
+      { user: "A", avatarUrl: "https://loremflickr.com/320/240" },
+      { user: "B", avatarUrl: "https://loremflickr.com/320/240" },
+      { user: "C", avatarUrl: "https://loremflickr.com/320/240" },
+    ];
   }
 
   render() {
