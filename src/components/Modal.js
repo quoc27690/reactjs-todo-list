@@ -7,7 +7,7 @@ export default class Modal extends Component {
         {/* Button trigger modal */}
         <button
           type="button"
-          class="btn btn-primary"
+          className="btn btn-primary"
           data-toggle="modal"
           data-target="#staticBackdrop"
         >
@@ -16,30 +16,29 @@ export default class Modal extends Component {
 
         {/* Modal */}
         <div
-          class="modal fade"
+          className="modal fade"
           id="staticBackdrop"
           data-backdrop="static"
-          tabindex="-1"
           role="dialog"
           aria-labelledby="staticBackdropLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="staticBackdropLabel">
                   This is a Modal
                 </h5>
                 <button
                   type="button"
-                  class="close"
+                  className="close"
                   data-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
                 printing and typesetting industry. Lorem Ipsum has been the
                 industry's standard dummy text ever since the 1500s, when an
@@ -51,17 +50,17 @@ export default class Modal extends Component {
                 recently with desktop publishing software like Aldus PageMaker
                 including versions of Lorem Ipsum.
               </div>
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-success"
+                  className="btn btn-success"
                   data-dismiss="modal"
                 >
                   Accept
                 </button>
                 <button
                   type="button"
-                  class="btn btn-danger"
+                  className="btn btn-danger"
                   data-dismiss="modal"
                 >
                   Decline

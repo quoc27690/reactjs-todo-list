@@ -4,17 +4,26 @@ import classNames from "classnames";
 
 import "../App.css";
 
+import checkmark from "../images/checkmark.svg";
+import checkmarkdone from "../images/checkmarkdone.svg";
+
 export default class TodoItem extends Component {
   render() {
-    const { item, onClick } = this.props;
+    const { item, onClick, onCickx } = this.props;
+    let url = checkmark;
+    if (item.isComplete) {
+      url = checkmarkdone;
+    }
     return (
       <div
         onClick={onClick}
-        className={classNames("TodoItem", {
+        className={classNames("d-flex", "TodoItem", {
           "TodoItem-complete": item.isComplete,
         })}
+        style={{ paddingTop: 10, paddingBottom: 10, cursor: "pointer" }}
       >
-        <p>{item.title}</p>
+        <img src={url} style={{ width: 20 }} />
+        <p style={{ marginBottom: 0, marginLeft: 10 }}>{item.title}</p>
       </div>
     );
   }

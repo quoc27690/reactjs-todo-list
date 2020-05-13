@@ -17,16 +17,20 @@ import Notification from "./components/Notification";
 import TrafficLight from "./components/TrafficLight";
 import SearchBox from "./components/SearchBox ";
 import Modal from "./components/Modal";
+import empt from "./images/empt.svg";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      newItem: "",
       todoItems: [
         { title: "mua bim bim", isComplete: false },
         { title: "di cho", isComplete: false },
         { title: "tam bien", isComplete: false },
+        { title: "da banh", isComplete: true },
+        { title: "nhau", isComplete: true },
       ],
     };
   }
@@ -45,10 +49,56 @@ export default class App extends Component {
     };
   };
 
-  render() {
+  onCickX = (item) => {
+    return () => {
+      const { todoItems } = this.state;
+      const index = todoItems.indexOf(item);
+      todoItems.splice(index, 1);
+      this.setState({
+        todoItems: todoItems,
+      });
+    };
+  };
+
+  onChange = (event) => {
+    let value = event.target.value;
+    this.setState({
+      newItem: value,
+    });
+  };
+  onAdd = (newItem) => {
+    return () => {
+      // Đặt điều kiện để trống hoặc có space thì ko được
+      if (newItem === "") {
+        return;
+      }
+      newItem = newItem.trim();
+      if (newItem === "") {
+        return;
+      }
+
+      this.setState({
+        newItem: "",
+        todoItems: [
+          { title: newItem, isComplete: false },
+          ...this.state.todoItems,
+        ],
+      });
+    };
+  };
+
+  onUncheck = () => {
     const { todoItems } = this.state;
+    todoItems.map((item) => (item.isComplete = false));
+    this.setState({
+      todoItems: todoItems,
+    });
+  };
+
+  render() {
+    const { todoItems, newItem } = this.state;
     return (
-      <div className="container mt-3 text-center">
+      <div className="container mt-3 text-center bg-light">
         <h5>Bài tập 06</h5>
         <Header />
         <br />
@@ -72,13 +122,6 @@ export default class App extends Component {
         <h5>Bài tập 11</h5>
         <Notification hasUnread={0} />
         <hr />
-        <h5>Bài học 11</h5>
-        {todoItems.length > 0 &&
-          todoItems.map((item, index) => (
-            <TodoItem item={item} key={index} onClick={this.onClick(item)} />
-          ))}
-        {todoItems.length === 0 && <div>Nothing</div>}
-        <hr />
         <h5>Bài học 12</h5>
         <TrafficLight />
         <hr />
@@ -87,6 +130,91 @@ export default class App extends Component {
         <hr />
         <h5>Bài tập 13</h5>
         <Modal />
+        <hr />
+        <h5>Bài tập 17</h5>
+        <div
+          className="p-3 bg-TodoList rounded shadow-sm"
+          style={{ marginLeft: 300, marginRight: 300 }}
+        >
+          <h4 className="text-white">DAILIST</h4>
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Add A New Item"
+              value={newItem}
+              onChange={this.onChange}
+            />
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-secondary"
+                type="button"
+                onClick={this.onAdd(newItem)}
+              >
+                Add
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-3">
+            <p className="text-left" style={{ marginBottom: 0 }}>
+              UPCOMING
+            </p>
+            {todoItems.length > 0 &&
+              todoItems
+                .filter((item) => !item.isComplete)
+                .map((item, index) => (
+                  <div className="d-flex border-bottom" key={index}>
+                    <TodoItem item={item} onClick={this.onClick(item)} />
+                    <button
+                      type="button"
+                      className="close ml-auto"
+                      onClick={this.onCickX(item)}
+                    >
+                      &times;
+                    </button>
+                  </div>
+                ))}
+            {todoItems.filter((item) => !item.isComplete).length === 0 && (
+              <div>
+                <img src={empt} style={{ width: 200, height: 200 }}></img>
+              </div>
+            )}
+          </div>
+
+          <div className="mt-3">
+            <p className="text-left" style={{ marginBottom: 0 }}>
+              FINISHED
+            </p>
+            {todoItems.length > 0 &&
+              todoItems
+                .filter((item) => item.isComplete)
+                .map((item, index) => (
+                  <div className="d-flex border-bottom" key={index}>
+                    <TodoItem item={item} onClick={this.onClick(item)} />
+                    <button
+                      type="button"
+                      className="close ml-auto"
+                      onClick={this.onCickX(item)}
+                    >
+                      &times;
+                    </button>
+                  </div>
+                ))}
+            {todoItems.filter((item) => item.isComplete).length === 0 && (
+              <div>
+                <img src={empt} style={{ width: 200, height: 200 }}></img>
+              </div>
+            )}
+          </div>
+
+          <small className="d-block text-right mt-3">
+            <button className="btn btn-light" onClick={this.onUncheck}>
+              All Uncheck
+            </button>
+          </small>
+        </div>
+        <hr />
       </div>
     );
   }
