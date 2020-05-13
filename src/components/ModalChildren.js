@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-export default class Modal extends Component {
+export default class ModalChildren extends Component {
   render() {
-    const { content } = this.props;
+    const { children } = this.props;
     return (
       <div>
         {/* Button trigger modal */}
@@ -39,7 +39,7 @@ export default class Modal extends Component {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div className="modal-body">{content}</div>
+              <div className="modal-body">{children}</div>
               <div className="modal-footer">
                 <button
                   type="button"

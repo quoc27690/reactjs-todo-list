@@ -17,6 +17,7 @@ import Notification from "./components/Notification";
 import TrafficLight from "./components/TrafficLight";
 import SearchBox from "./components/SearchBox ";
 import Modal from "./components/Modal";
+import ModalChildren from "./components/ModalChildren";
 import empt from "./images/empt.svg";
 
 export default class App extends Component {
@@ -128,8 +129,32 @@ export default class App extends Component {
         <h5>Bài tập 12</h5>
         <SearchBox />
         <hr />
-        <h5>Bài tập 13</h5>
-        <Modal />
+        <h5>Bài tập 13, 18</h5>
+        <p>Modal with props content</p>
+        <Modal
+          content="What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
+                printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an
+                unknown printer took a galley of type and scrambled it to make a
+                type specimen book. It has survived not only five centuries, but
+                also the leap into electronic typesetting, remaining essentially
+                unchanged. It was popularised in the 1960s with the release of
+                Letraset sheets containing Lorem Ipsum passages, and more
+                recently with desktop publishing software like Aldus PageMaker
+                including versions of Lorem Ipsum."
+        />
+        <p>Modal with props children</p>
+        <ModalChildren>
+          What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing
+          and typesetting industry. Lorem Ipsum has been the industry's standard
+          dummy text ever since the 1500s, when an unknown printer took a galley
+          of type and scrambled it to make a type specimen book. It has survived
+          not only five centuries, but also the leap into electronic
+          typesetting, remaining essentially unchanged. It was popularised in
+          the 1960s with the release of Letraset sheets containing Lorem Ipsum
+          passages, and more recently with desktop publishing software like
+          Aldus PageMaker including versions of Lorem Ipsum.
+        </ModalChildren>
         <hr />
         <h5>Bài tập 17</h5>
         <div
