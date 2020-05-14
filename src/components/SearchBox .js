@@ -50,7 +50,7 @@ export default class SearchBox extends Component {
           }
           onChange={this.onFocused}
         />
-        <img src={isFocused ? search2 : search1} style={{ width: 20 }} />
+        <img src={isFocused ? search2 : search1} style={{ width: 20 }} alt="" />
       </div>
     );
   }

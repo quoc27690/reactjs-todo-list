@@ -34,14 +34,12 @@ export default class LoginForm extends Component {
                 value=""
                 id="defaultCheck1"
               />
-              <label className="form-check-label">
-                Keep me signed in
-              </label>
+              <label className="form-check-label">Keep me signed in</label>
             </div>
-            <br/>
-            <div className='d-flex justify-content-around'>
-                <a href='#'>Forgot username?</a>
-                <a href='#'>Forgot password?</a>
+            <br />
+            <div className="d-flex justify-content-around">
+              <button>Forgot username?</button>
+              <button>Forgot password?</button>
             </div>
           </div>
           <div className="col-4"></div>

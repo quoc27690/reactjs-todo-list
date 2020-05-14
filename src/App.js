@@ -19,6 +19,9 @@ import SearchBox from "./components/SearchBox ";
 import Modal from "./components/Modal";
 import ModalChildren from "./components/ModalChildren";
 import empt from "./images/empt.svg";
+import Google from "./components/Google";
+import Counter from "./components/Counter";
+import BookList from "./components/BookList";
 
 export default class App extends Component {
   constructor(props) {
@@ -33,6 +36,9 @@ export default class App extends Component {
         { title: "da banh", isComplete: true },
         { title: "nhau", isComplete: true },
       ],
+      books: [],
+      searchBook: "",
+      error: "",
     };
   }
 
@@ -96,8 +102,52 @@ export default class App extends Component {
     });
   };
 
+  searchBook = (event) => {
+    let value = event.target.value;
+    this.setState({
+      searchBook: value,
+    });
+  };
+
+  onSearchBook = (searchBook) => {
+    return () => {
+      const { books } = this.state;
+      this.setState({
+        books: books.filter(
+          (book) =>
+            book.title.toLowerCase().indexOf(searchBook.toLowerCase()) !== -1
+        ),
+      });
+    };
+  };
+
+  componentDidUpdate() {
+    console.log("App componentDidUpdate");
+  }
+
+  componentDidMount() {
+    fetch("https://nodejs-express-demo-quoc276.herokuapp.com/api/books/")
+      .then((res) => res.json())
+      .then(
+        (books) => {
+          this.setState({
+            books: books,
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            error,
+          });
+        }
+      );
+  }
+
   render() {
-    const { todoItems, newItem } = this.state;
+    console.log("App render");
+    const { todoItems, newItem, books, searchBook } = this.state;
     return (
       <div className="container mt-3 text-center bg-light">
         <h5>Bài tập 06</h5>
@@ -202,7 +252,11 @@ export default class App extends Component {
                 ))}
             {todoItems.filter((item) => !item.isComplete).length === 0 && (
               <div>
-                <img src={empt} style={{ width: 200, height: 200 }}></img>
+                <img
+                  src={empt}
+                  style={{ width: 200, height: 200 }}
+                  alt=""
+                ></img>
               </div>
             )}
           </div>
@@ -228,7 +282,11 @@ export default class App extends Component {
                 ))}
             {todoItems.filter((item) => item.isComplete).length === 0 && (
               <div>
-                <img src={empt} style={{ width: 200, height: 200 }}></img>
+                <img
+                  src={empt}
+                  style={{ width: 200, height: 200 }}
+                  alt=""
+                ></img>
               </div>
             )}
           </div>
@@ -238,6 +296,42 @@ export default class App extends Component {
               All Uncheck
             </button>
           </small>
+        </div>
+        <hr />
+        <h5>Bài tập 20</h5>
+        <Google />
+        <hr />
+        <h5>Bài học 21</h5>
+        <Counter />
+        <hr />
+        <h5>Bài tập 21</h5>
+        <div>
+          <h5>BookList</h5>
+          <div className="input-group mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Typing..."
+              style={{ marginLeft: 300 }}
+              onChange={this.searchBook}
+              value={searchBook}
+            />
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-secondary"
+                type="button"
+                style={{ marginRight: 300 }}
+                onClick={this.onSearchBook(searchBook)}
+              >
+                Search
+              </button>
+            </div>
+          </div>
+          <div className="row justify-content-around">
+            {books.map((book, index) => (
+              <BookList book={book} key={index} />
+            ))}
+          </div>
         </div>
         <hr />
       </div>
